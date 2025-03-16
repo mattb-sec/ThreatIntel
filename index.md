@@ -105,3 +105,47 @@ Once we run the code, our final output looks like this:
 > 
 > 47.236.174.218 - Confidence Score : 100
 
+This output proves that our threat intelligence feed works! We now have a working program that can supply up-to-date information about malicious IP addresses.
+
+## Applying Automation
+
+We now have a reliable program that, once run, retrives the current list of known malicious IP addresses from AbuseIPDB and prints the first 10 lines to prove that it is working. This is a good start, but now we also have to consider how often AbuseIPDB gets updated. Nearly every time I have repeated this program, a new list of IP addresses appears. This means that new malicious IP addresses are constantly emerging. Now we have to consider: If we want to update our threat intelligence feed, we manually have to open the program and run it each time. This is doable, but can still take up valuable time and resources. Using task scheduler, we can automate our program to run itself after a specified amount of time.
+
+Suppose I want my program to run by itself every six hours. Since I am using a Windows computer, I can open Task Scheduler and create a new task.
+
+- _Figure 3_: The task creation window of Windows Task Scheduler. I have given my new task a name and a description.
+
+<p align="center">
+  <img width="384" height="384" src="assets/fig4.png">
+</p>
+
+Next I need to specify my task's trigger. In this case, I want my program to run every six hours.
+
+- _Figure 4_: Task Scheduler's trigger creation window. I have set it to recur daily every six hours, and for this to happen indefinitely.
+
+<p align="center">
+  <img width="384" height="384" src="assets/fig5.png">
+</p>
+
+Lastly, I need to specify what is happening when this task executes. I want it to start a program, Python, and specifically run my Python script.
+
+- _Figure 5_: Task Scheduler's new action creation window. I have specified the paths to both Python.exe and my Python script (note: For this figure, I have hidden their true file paths).
+
+<p align="center">
+  <img width="384" height="384" src="assets/fig6.png">
+</p>
+
+With all this in place, I select "Finish" and now my task is created and scheduled. My threat intelligence feed can receive an updated list of known malicious IP addresses from AbuseIPDB every six hours. I do not think this is quite on par with professionally-made intelligence feeds, but it is a good start!
+
+## Conclusion
+
+This is a pretty barebones threat intelligence feed, but I believe it is still good at what it does. It retrives the latest list of known malicious IP addresses from AbuseIPDB and stores them for use. I can also consider the implications beyond this lab. Thinking back to my SIEM in Azure, I can link this threat intelligence feed to it which can significantly enhance its security operations. Now, in addition to detecting RDP logins, it can also be on the lookout for malicious IP addresses, which is a major element to cyber attacks. Moreover, with the automation, we can keep our threat intelligence feed up-to-date so that it stays aware of new threats as often as we need it to be. This methodology is what the most effective security tools use and how cyber defenders stay on top of threats and catch them before they even emerge.
+
+## Resources
+
+[CrowdStrike](https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/threat-intelligence-feeds/)
+
+[Mindflow](https://mindflow.io/integrations/abuseipdb)
+
+[AbuseIPDB](https://www.abuseipdb.com)
+
