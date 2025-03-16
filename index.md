@@ -65,7 +65,7 @@ With all this combined, our full HTTPS API request looks like this:
   >GET /api/v2/blacklist HTTP/1.1
 
 - Headers
-  > Host: api.abuseipbdb.com
+  > Host: api.abuseipdb.com
   > 
   > Accept: application/json
   > 
