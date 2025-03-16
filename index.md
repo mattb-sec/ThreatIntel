@@ -25,4 +25,27 @@ For this lab, I will keep my key name simple. The name "ThreatFeedProject" will 
 
 ## Creating the Python File
 
-With my API key, I can now use my program to pull information from AbuseIPDB's database. Recalling that my goal here is to collect known malicious IP addresses and display them, I know that my program should do the following: Connect with AbuseIPDB, pull a list of malicious IP addresses, and display them in a formatted manner. 
+With my API key, I can now use my program to pull information from AbuseIPDB's database. Recalling that my goal here is to collect known malicious IP addresses and display them, I know that my program should do the following: Connect with AbuseIPDB, pull a list of malicious IP addresses, and display them in a formatted manner. Here is the first draft of my code:
+
+```js
+
+import requests
+
+API_KEY = "my_abuseipdb_api_key"
+URL = "https://api.abuseipdb.com/api/v2/blacklist"
+
+headers = {
+    "Accept": "application/json",
+    "Key": API_KEY
+}
+
+response = requests.get(URL, headers=headers)
+data = response.json()
+
+# Print the first 10 malicious IPs
+
+print("🔴 Malicious IPs Found:")
+for ip in data ['data'][:10]: # Limit to 10 results
+    print(f"{ip['ipAddress']} - Confidence Score : {ip['abuseConfidenceScore']}")
+
+```
