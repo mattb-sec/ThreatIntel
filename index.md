@@ -11,14 +11,15 @@ This threat intelligence feed will be fairly barebones, but still nonetheless ef
 - _Figure 1_: The homepage for AbuseIPDB. Our point of interest is registering for an API key.
 
 <p align="center">
-  <img width="384" height="384" src="assets/fig1.PNG">
+  <img width="1905" height="781" src="assets/fig1.PNG">
 </p>
 
 After entering my information and creating my account, I can now go to the "API" tab and create my key.
 
 - _Figure 2_: The user account homepage with the API tab open.
+
 <p align="center">
-  <img width="384" height="384" src="assets/fig2.png">
+  <img width="929" height="580" src="assets/fig2.PNG">
 </p>
 
 For this lab, I will keep my key name simple. The name "ThreatFeedProject" will do. Upon clicking "Create", my API key is generated. Now that I have everything I need, I can now open VS Code and begin my Python program.
@@ -116,7 +117,7 @@ Suppose I want my program to run by itself every six hours. Since I am using a W
 - _Figure 3_: The task creation window of Windows Task Scheduler. I have given my new task a name and a description.
 
 <p align="center">
-  <img width="384" height="384" src="assets/fig4.png">
+  <img width="628" height="228" src="assets/fig4.png">
 </p>
 
 Next I need to specify my task's trigger. In this case, I want my program to run every six hours.
@@ -124,7 +125,7 @@ Next I need to specify my task's trigger. In this case, I want my program to run
 - _Figure 4_: Task Scheduler's trigger creation window. I have set it to recur daily every six hours, and for this to happen indefinitely.
 
 <p align="center">
-  <img width="384" height="384" src="assets/fig5.png">
+  <img width="591" height="517" src="assets/fig5.PNG">
 </p>
 
 Lastly, I need to specify what is happening when this task executes. I want it to start a program, Python, and specifically run my Python script.
@@ -132,7 +133,7 @@ Lastly, I need to specify what is happening when this task executes. I want it t
 - _Figure 5_: Task Scheduler's new action creation window. I have specified the paths to both Python.exe and my Python script (note: For this figure, I have hidden their true file paths).
 
 <p align="center">
-  <img width="384" height="384" src="assets/fig6.png">
+  <img width="453" height="499" src="assets/fig6.PNG">
 </p>
 
 With all this in place, I select "Finish" and now my task is created and scheduled. My threat intelligence feed can receive an updated list of known malicious IP addresses from AbuseIPDB every six hours. I do not think this is quite on par with professionally-made intelligence feeds, but it is a good start!
