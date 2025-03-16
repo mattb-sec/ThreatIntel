@@ -11,7 +11,7 @@ This threat intelligence feed will be fairly barebones, but still nonetheless ef
 - _Figure 1_: The homepage for AbuseIPDB. Our point of interest is registering for an API key.
 
 <p align="center">
-  <img width="600" height="800" src="assets/fig1.PNG">
+  <img width="1200" height="800" src="assets/fig1.PNG">
 </p>
 
 After entering my information and creating my account, I can now go to the "API" tab and create my key.
