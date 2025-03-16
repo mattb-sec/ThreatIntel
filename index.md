@@ -66,8 +66,11 @@ With all this combined, our full HTTPS API request looks like this:
 
 - Headers
   > Host: api.abuseipbdb.com
+  > 
   > Accept: application/json
+  > 
   > Key: (my AbuseIPDB API key)
+  > 
   > User-Agent: python-requests/2.31.0
 
 All right, now all of this runs and we send our request. AbuseIPDB responds and now we have our data, but we cannot necessarily see it. To prove that this program is working and that it is retrieving data, we will have it print out the results. I imagine the amount of data stored in our "data" variable is quite massive, but to keep it simple, we will only print the first 10 lines. First we will print a sort of header, so we know what the data printing out is for. I simply use the "print" fuction to print "🔴 Malicious IPs Found:". The red circle emoji is merely for visual emphasis.
