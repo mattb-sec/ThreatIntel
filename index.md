@@ -75,4 +75,32 @@ With all this combined, our full HTTPS API request looks like this:
 
 All right, now all of this runs and we send our request. AbuseIPDB responds and now we have our data, but we cannot necessarily see it. To prove that this program is working and that it is retrieving data, we will have it print out the results. I imagine the amount of data stored in our "data" variable is quite massive, but to keep it simple, we will only print the first 10 lines. First we will print a sort of header, so we know what the data printing out is for. I simply use the "print" fuction to print "🔴 Malicious IPs Found:". The red circle emoji is merely for visual emphasis.
 
-Now for the actual body of our printed message. We are only interested in the first 10 IP addresses retrieved from AbuseIPDB. 
+Now for the actual body of our printed message. We are only interested in the first 10 IP addresses retrieved from AbuseIPDB. We can do so using a "for" loop and specifying it to iterate 10 times. We initiate our "for" loop with the keyword "for", then define our iteration variable, "ip", then specify our target for iteration, which is our "data" variable. From our "data" variable, we want the key "data" that is returned from AbuseIPDB's response. This "data" key holds a list of dictionaries with each one representing an IP report. Now from that key, we want to print the data so that it is formatted like so:
+
+> (IP address) - Confidence Score : (AbuseIPDB's confidence score)
+
+To do so, we will pull the values of AbuseIPDB's "ipAddress" and "abuseConfidenceScore" keys and plug them into our formatted message. We do this 10 times, then we have our list of malicious IP addresses and their confidence scores.
+
+Once we run the code, our final output looks like this:
+
+> 🔴 Malicious IPs Found:
+> 87.120.93.11 - Confidence Score : 100
+> 
+> 134.209.151.205 - Confidence Score : 100
+> 
+> 125.229.136.194 - Confidence Score : 100
+> 
+> 68.178.145.83 - Confidence Score : 100
+> 
+> 104.199.151.189 - Confidence Score : 100
+> 
+> 209.38.226.20 - Confidence Score : 100
+> 
+> 185.156.73.222 - Confidence Score : 100
+> 
+> 196.251.91.8 - Confidence Score : 100
+> 
+> 185.255.91.164 - Confidence Score : 100
+> 
+> 47.236.174.218 - Confidence Score : 100
+
