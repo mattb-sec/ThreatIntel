@@ -117,7 +117,7 @@ Suppose I want my program to run by itself every six hours. Since I am using a W
 - _Figure 3_: The task creation window of Windows Task Scheduler. I have given my new task a name and a description.
 
 <p align="center">
-  <img width="628" height="228" src="assets/fig4.png">
+  <img width="628" height="228" src="assets/fig4.PNG">
 </p>
 
 Next I need to specify my task's trigger. In this case, I want my program to run every six hours.
