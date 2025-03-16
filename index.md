@@ -25,7 +25,7 @@ For this lab, I will keep my key name simple. The name "ThreatFeedProject" will 
 
 ## Creating the Python File
 
-With my API key, I can now use my program to pull information from AbuseIPDB's database. Recalling that my goal here is to collect known malicious IP addresses and display them, I know that my program should do the following: Connect with AbuseIPDB, pull a list of malicious IP addresses, and display them in a formatted manner. Here is the first draft of my code:
+With my API key, I can now use my program to pull information from AbuseIPDB's database. Recalling that my goal here is to collect known malicious IP addresses and display them, I know that my program should do the following: Connect with AbuseIPDB, pull a list of malicious IP addresses, and display them in a formatted manner. First I will provide my code, then I will give a line-by-line breakdown. Here is the first draft of my code:
 
 ```js
 
@@ -49,3 +49,27 @@ for ip in data ['data'][:10]: # Limit to 10 results
     print(f"{ip['ipAddress']} - Confidence Score : {ip['abuseConfidenceScore']}")
 
 ```
+
+We begin with "import requests." This line tells Python to link to the "requests" module. This is so we can send API requests to AbuseIPDB. 
+
+Next we define two variables. The first one is the API key I obtained from AbuseIPDB. Now my actual key is much longer and more complex, but for the purpose of this report (and to not give away my API key), I have replaced the actual key with "my_abuseipdb_api_key". This key is important because it is what authorizes my program to access AbuseIPDB. The second variable is "URL" which stores the AbuseIPDB API URL for checking an IP. We use this variable as a pointer so that when we plug it into a function, the variable can tell the function where to find the data.
+
+Next we define a dictionary named "headers". In our program, we are communicating with AbuseIPDB via HTTPS, which is facilitated through HTTPS headers. Therefore, our "headers' dictionary formats our API requests so that they are readable via HTTPS and we can define what we want in the API request. In this case, the "Accept: "application/json" key-value pair specifies that we want our data in JSON format, and the "Key: API_KEY" key-value pair authenticates our request with my API key. This dictionary is what we will use to build the header of our HTTPS API request.
+
+We have our header sorted out, but now we need to build the request line of the HTTPS request. Here, we need to specify the method of our HTTPS request. In this case, we are trying to retrive data from AbuseIPDB, so we will use the GET method. Our request will use the "requests.get()" function with our "URL" variable specifying the API endpoint URL, and our "headers" dictionary specifying the values for the HTTPS API request header. What we receive from this request is stored in the "response" variable. The next variable, "data", takes our "response" and parses its raw JSON format into a Python dictionary that we can use.
+
+With all this combined, our full HTTPS API request looks like this:
+
+- Request Line
+  >
+  >GET /api/v2/blacklist HTTP/1.1
+
+- Headers
+  > Host: api.abuseipbdb.com
+  > Accept: application/json
+  > Key: (my AbuseIPDB API key)
+  > User-Agent: python-requests/2.31.0
+
+All right, now all of this runs and we send our request. AbuseIPDB responds and now we have our data, but we cannot necessarily see it. To prove that this program is working and that it is retrieving data, we will have it print out the results. I imagine the amount of data stored in our "data" variable is quite massive, but to keep it simple, we will only print the first 10 lines. First we will print a sort of header, so we know what the data printing out is for. I simply use the "print" fuction to print "🔴 Malicious IPs Found:". The red circle emoji is merely for visual emphasis.
+
+Now for the actual body of our printed message. We are only interested in the first 10 IP addresses retrieved from AbuseIPDB. 
