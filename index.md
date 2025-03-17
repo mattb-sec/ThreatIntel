@@ -1,10 +1,9 @@
-# Creating a Threat Intelligence Feed
 
-## Introduction
+# Introduction
 
 Thinking back to my SIEM from earlier, I configured it so that it would create an alert when it detects a successful RDP login. Now that is only one form of attack it can detect from a whole plethora of cyber attacks. Theoretically, I can make my SIEM "smarter" by configuring it to detect nearly every form of cyber attack under the digital sun. That could work, but in a real-world setting, this idea is way too time-consuming and resource-intensive. More than that, it would put you behind the attackers. Creating rules for known cyber attacks is purely reactive behavior. To make our security posture as effective as possible, we want to create a real-time data stream that informs our security tools about indicators of malicious behavior such as unusual domains, malware signatures, or IP addressess associated with known threat actors (CrowdStrike). This is where threat intelligence feeds come in. Rather than purely being on the defensive, we can be proactive and detect potential threats before they arise while minimizing effort on the user's part. In this lab, I will be creating a simple threat intelligence feed that collects known malicious IP addresses and displays them in an easy-to-read format.
 
-## Setting Up the Tools
+# Setting Up the Tools
 
 This threat intelligence feed will be fairly barebones, but still nonetheless effective at what it is meant to do. For this lab, I only need three things: Python, VS Code, and an API key from AbuseIPDB. For reference, AbuseIPDB is a community-based IP blacklist database where users can report IP addresses that they deem malicious (Mindflow). This will help us enourmously as we will be pulling from this database to determine our malicious IP addresses. This data, in turn, can be fed to our cybersecurity tools so they will quickly know what to flag. Python and VS Code are already installed on my computer, but I can demonstrate how to obtain a free API key from AbuseIPDB.
 
@@ -24,7 +23,7 @@ After entering my information and creating my account, I can now go to the "API"
 
 For this lab, I will keep my key name simple. The name "ThreatFeedProject" will do. Upon clicking "Create", my API key is generated. Now that I have everything I need, I can now open VS Code and begin my Python program.
 
-## Creating the Python File
+# Creating the Python File
 
 With my API key, I can now use my program to pull information from AbuseIPDB's database. Recalling that my goal here is to collect known malicious IP addresses and display them, I know that my program should do the following: Connect with AbuseIPDB, pull a list of malicious IP addresses, and display them in a formatted manner. First I will provide my code, then I will give a line-by-line breakdown. Here is the first draft of my code:
 
@@ -108,7 +107,7 @@ Once we run the code, our final output looks like this:
 
 This output proves that our threat intelligence feed works! We now have a working program that can supply up-to-date information about malicious IP addresses.
 
-## Applying Automation
+# Applying Automation
 
 We now have a reliable program that, once run, retrives the current list of known malicious IP addresses from AbuseIPDB and prints the first 10 lines to prove that it is working. This is a good start, but now we also have to consider how often AbuseIPDB gets updated. Nearly every time I have repeated this program, a new list of IP addresses appears. This means that new malicious IP addresses are constantly emerging. Now we have to consider: If we want to update our threat intelligence feed, we manually have to open the program and run it each time. This is doable, but can still take up valuable time and resources. Using task scheduler, we can automate our program to run itself after a specified amount of time.
 
@@ -138,7 +137,7 @@ Lastly, I need to specify what is happening when this task executes. I want it t
 
 With all this in place, I select "Finish" and now my task is created and scheduled. My threat intelligence feed can receive an updated list of known malicious IP addresses from AbuseIPDB every six hours. I do not think this is quite on par with professionally-made intelligence feeds, but it is a good start!
 
-## Conclusion
+# Conclusion
 
 This is a pretty barebones threat intelligence feed, but I believe it is still good at what it does. It retrives the latest list of known malicious IP addresses from AbuseIPDB and stores them for use. I can also consider the implications beyond this lab. Thinking back to my SIEM in Azure, I can link this threat intelligence feed to it which can significantly enhance its security operations. Now, in addition to detecting RDP logins, it can also be on the lookout for malicious IP addresses, which is a major element to cyber attacks. Moreover, with the automation, we can keep our threat intelligence feed up-to-date so that it stays aware of new threats as often as we need it to be. This methodology is what the most effective security tools use and how cyber defenders stay on top of threats and catch them before they even emerge.
 
